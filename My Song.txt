@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Crown of Ashes VR - Open World</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene embedded vr-mode-ui="enabled: true">
+      <!-- Ground -->
+      <a-plane rotation="-90 0 0" width="100" height="100" color="#4B5320"></a-plane>
+      <!-- Sky -->
+      <a-sky color="#222"></a-sky>
+
+      <!-- Player -->
+      <a-entity id="player" camera wasd-controls look-controls position="0 1.6 0">
+        <a-entity oculus-touch-controls="hand: left" laser-controls="hand: left"></a-entity>
+        <a-entity oculus-touch-controls="hand: right" laser-controls="hand: right"></a-entity>
+      </a-entity>
+
+      <!-- Sword -->
+      <a-entity id="sword" gltf-model="assets/sword.glb" position="2 1 -3" scale="1 1 1"></a-entity>
+
+      <!-- Villagers -->
+      <a-entity id="villager1" gltf-model="assets/villager.glb" position="-5 0 -5" scale="1 1 1"></a-entity>
+      <a-entity id="villager2" gltf-model="assets/villager.glb" position="8 0 -7" scale="1 1 1"></a-entity>
+
+      <!-- Castle -->
+      <a-entity gltf-model="assets/castle.glb" position="20 0 -20" scale="2 2 2"></a-entity>
+
+      <!-- Trees -->
+      <a-entity gltf-model="assets/tree.glb" position="-10 0 -10"></a-entity>
+      <a-entity gltf-model="assets/tree.glb" position="12 0 -15"></a-entity>
+
+      <!-- Interactions -->
+      <script>
+        const sword = document.getElementById('sword');
+        sword.addEventListener('click', () => {
+          alert('You picked up the sword! You are ready for combat.');
+        });
+
+        const villager1 = document.getElementById('villager1');
+        villager1.addEventListener('click', () => {
+          alert('Villager: "Knight! Help us protect the village!"');
+        });
+
+        const villager2 = document.getElementById('villager2');
+        villager2.addEventListener('click', () => {
+          alert('Villager: "Beware the castle guards ahead!"');
+        });
+      </script>
+    </a-scene>
+  </body>
+</html>
